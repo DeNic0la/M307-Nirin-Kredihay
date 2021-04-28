@@ -15,7 +15,7 @@
     <div class="message_container">
         <h1>404</h1>
         <h2>Diese Seite kann nicht gefunden werden</h2>
-        <a class="btn btn-primary btn-lg" href="./" role="button">Back to Home</a>
+        <a class="btn btn-primary btn-lg" href="./" role="button">Zurück zur Übersicht</a>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
 </body>

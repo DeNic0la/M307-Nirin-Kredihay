@@ -12,11 +12,19 @@
     <link rel="stylesheet" href="./public/css/home">
 
     <title>Create</title>
+
 </head>
 <body>
     <div class="wrapper ">
         <?php include './app/Views/nav.view.php'; ?>
         <div class="main-panel">
+            <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
+                <div class="container-fluid">
+                    <div class="navbar-wrapper">
+                        <a class="navbar-brand" href="javascript:">Create</a>
+                    </div>
+                </div>
+            </nav>
             <div class="content">
                 <ul id="errorDisplayer"></ul>
                 <div class="container-fluid">

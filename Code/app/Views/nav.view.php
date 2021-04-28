@@ -19,7 +19,7 @@
             </li>
             <li class="nav-item active  ">
                 <a class="nav-link" href="list">
-                    <i class="material-icons">sort</i>
+                    <i class="material-icons">list</i>
                     <p>Liste</p>
                 </a>
             </li>

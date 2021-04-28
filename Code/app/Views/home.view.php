@@ -17,6 +17,13 @@
     <?php include './app/Views/nav.view.php'; ?>
 
     <div class="main-panel">
+        <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
+            <div class="container-fluid">
+                <div class="navbar-wrapper">
+                    <a class="navbar-brand" href="javascript:">Dashboard</a>
+                </div>
+            </div>
+        </nav>
         <div class="content">
             <div class="container-fluid">
                 <div class="row">
@@ -24,7 +31,7 @@
                         <div class="card">
                             <div class="card-header card-chart card-header-warning card-header-width">
                                 <div class="ct-chart" id="dailySalesChart">
-                                    <i class="fa fa-flag fa-lg"" aria-hidden="true"></i>
+                                    <i class="fa fa-flag fa-lg" aria-hidden="true"></i>
                                 </div>
                             </div>
                             <div class="card-body">

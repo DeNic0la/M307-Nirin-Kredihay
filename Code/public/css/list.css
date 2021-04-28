@@ -1,0 +1,15 @@
+ul#horizontal-list li{
+    display:inline-block;
+}
+
+h4{
+    display: inline;
+    margin-right: 5%;
+}
+
+.edit{
+}
+
+.list{
+    list-style-type:none;
+}

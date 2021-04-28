@@ -31,21 +31,6 @@
                         </div>
                     </div>
                     <div class="card-body list-block">
-                        <!--
-                        <ul class="list">
-                            <?php foreach($loans as $loan) : ?>
-                            <li class="item">
-                                <h4><?= $loan->prename ," ", $loan->lastname?></h4>
-                                <h4><?= $loan->email ?></h4>
-                                <h4><?= $loan->phone ?></h4>
-                                <h4><?= $loan->rate, " Raten" ?></h4>
-                                <h4><?= $loan->getPackage()->name ?? "" ?></h4>
-                                <button type="button" class="btn btn-primary edit">Editieren</button>
-                            </li>
-                            <?php endforeach; ?>
-                        </ul>
-                         -->
-
                         <table class="table">
                             <thead>
                             <tr>
@@ -81,9 +66,12 @@
                                     <i class="material-icons"><?= $this->get_status($loan) ?></i>
                                 </td>
                                 <td class="td-actions text-center">
-                                    <a href="./edit" type="button" rel="tooltip" class="btn btn-primary">
-                                        <i class="material-icons">edit</i>
-                                    </a>
+                                    <form action="./edit" method="GET">
+                                        <input type="text" id="id" name="id" value="<?=$loan->id ?>" hidden>
+                                        <button type="submit" rel="tooltip" class="btn btn-primary">
+                                            <i class="material-icons">edit</i>
+                                        </button>
+                                    </form>
                                 </td>
                             </tr>
                             <?php endforeach; ?>

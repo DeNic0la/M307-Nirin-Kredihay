@@ -7,7 +7,7 @@ $routes = [
 	  '/404' => 'SiteNotFoundController@show',
     '/create' => 'CreateController@show',
     '/list' => 'ListController@show',
-    '/edit' => 'EditController@show'
+    '/edit' => 'EditController@show',
   
     // Below Here The Routes for Logik
     '/add' => 'CreateController@validate',

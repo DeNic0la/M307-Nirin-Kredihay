@@ -16,11 +16,10 @@
             'lastname' => 'required|NoNumber',
             'email' => 'required|email',
             'tel' => 'phone',
-            'rate' => 'required|integer',
-            'package' => 'required|integer',
+            'rate' => 'required|integer:1:10',
+            'package' => 'required|integer:1:40',
         ]);
         if ($Data['hasErrors']){
-            //TODO Notify the User About it
             $Errors = $Data['Errors'];
             $OldValues = $Data['Fields'];
             $ShowErrors = true;
@@ -33,7 +32,7 @@
             $CreatedLoan->phone = $Validated['tel'];
             $CreatedLoan->save();
 
-            Header("Location: /");
+            Header("Location: /list");
         }
         var_dump($Data);
         die();

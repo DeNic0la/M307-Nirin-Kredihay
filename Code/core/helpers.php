@@ -74,6 +74,20 @@ function validateRequest(array $Superglobal,array $fields):array{
                         $Errors[$field] = 'Bitte Geben sie eine Gültige Zahl ein';
                         continue 3;
                     }
+                    if (isset($ruleArray[1])){//Min
+                        if ($value <= $ruleArray[1]){
+                            $HasErrors = true;
+                            $Errors[$field] = 'Die eingegebene Zahl ist zu klein';
+                            continue 3;
+                        }
+                    }
+                    if (isset($ruleArray[2])){//Max
+                        if ($value >= $ruleArray[2]){
+                            $HasErrors = true;
+                            $Errors[$field] = 'Die eingegebene Zahl ist zu gross';
+                            continue 3;
+                        }
+                    }
                     elseif ($value !== ''){
                         $value = intval($value);
                     }

@@ -4,6 +4,7 @@ require 'core/bootstrap.php';
 $routes = [
     '/' => 'HomeController@show',
 	'/404' => 'SiteNotFoundController@show',
+    '/create' => 'CreateController@show',
 ];
 
 $db = [

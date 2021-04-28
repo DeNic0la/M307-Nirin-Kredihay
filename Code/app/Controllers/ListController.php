@@ -7,7 +7,7 @@ class ListController
         $loans = Loan::getAll();
 
         require './app/Views/list.view.php';
-        
+
     }
 
     public function get_status($loan):string

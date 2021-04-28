@@ -56,7 +56,7 @@
                                 <th>Raten</th>
                                 <th>Packet</th>
                                 <th class="text-center">Status</th>
-                                <th class="text-right">Aktion</th>
+                                <th class="text-center">Bearbeiten</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -78,12 +78,12 @@
                                 <td><?= $loan->rate, " Raten" ?></td>
                                 <td><?= $loan->getPackage()->name ?? "" ?></td>
                                 <td class="text-center">
-                                    <i class="material-icons">bolt</i>
+                                    <i class="material-icons"><?= $this->get_status($loan) ?></i>
                                 </td>
-                                <td class="td-actions text-right">
-                                    <button type="button" rel="tooltip" class="btn btn-primary">
+                                <td class="td-actions text-center">
+                                    <a href="./edit" type="button" rel="tooltip" class="btn btn-primary">
                                         <i class="material-icons">edit</i>
-                                    </button>
+                                    </a>
                                 </td>
                             </tr>
                             <?php endforeach; ?>

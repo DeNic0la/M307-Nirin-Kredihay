@@ -99,6 +99,7 @@ class Loan
     private static function makeSelfFromResult(array $result):self{
         $ToReturn = new self($result['prename'], $result['lastname'], $result['email'], $result['rate'], $result['fk_creditpackages_id']);
         $ToReturn->_data['id'] = $result['id'];
+        $ToReturn->_data['phone'] = $result['phone'];
         $ToReturn->_data['startdate'] = $result['startdate'];
         return $ToReturn;
     }

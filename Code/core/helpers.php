@@ -39,7 +39,7 @@ function db(): PDO
     require 'Config/dbInfo.php'; // Get The DB Variables from This File
 
     try {
-        $dbInstance = new PDO('mysql:host=127.0.0.1;dbname=' . $DataBaseConfig['name'], $DataBaseConfig['username'], $DataBaseConfig['password'], [
+        $dbInstance = new PDO('mysql:host=localhost;dbname=' . $DataBaseConfig['name'], $DataBaseConfig['username'], $DataBaseConfig['password'], [
             PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
             PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8',
         ]);

@@ -1,6 +1,6 @@
 <?php
 $DataBaseConfig = [ // This are Just for Development. Change password in Migrations_Up and here
-    'name'     => 'nirinkredihay',
+    'name'     => 'NirinKredihay',
     'username' => 'Code',
     'password' => 'DevPassword',
 ];

@@ -31,15 +31,17 @@
                         </div>
                     </div>
                     <div class="card-body list-block">
-                        <ul class="list"">
+                        <ul class="list">
+                            <?php foreach($loans as $loan) : ?>
                             <li class="item">
-                                <h4>Max Mustermann</h4>
-                                <h4>erin.bachmann@gmx.ch</h4>
-                                <h4>+41 76 761 03 99</h4>
-                                <h4>1 Rate</h4>
-                                <h4>Kredit Plus: 5k</h4>
+                                <h4><?= $loan->prename ," ", $loan->lastname?></h4>
+                                <h4><?= $loan->email ?></h4>
+                                <h4><?= $loan->phone ?></h4>
+                                <h4><?= $loan->rate, " Raten" ?></h4>
+                                <h4><?= $loan->getPackage()->name ?? "" ?></h4>
                                 <button type="button" class="btn btn-primary edit">Editieren</button>
                             </li>
+                            <?php endforeach; ?>
                         </ul>
                     </div>
                 </div>

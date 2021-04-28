@@ -2,7 +2,15 @@
 require 'core/bootstrap.php';
 
 $routes = [
-	'/' => 'WelcomeController@index',
+    '/' => 'HomeController@show',
+	'/404' => 'SiteNotFoundController@show',
+    '/create' => 'CreateController@show',
+];
+
+$db = [
+	'name'     => 'tasklist',
+	'username' => 'root',
+	'password' => '',
 ];
 
 $router = new Router($routes);

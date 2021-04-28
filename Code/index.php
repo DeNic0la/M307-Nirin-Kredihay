@@ -5,6 +5,7 @@ $routes = [
     '/' => 'HomeController@show',
 	'/404' => 'SiteNotFoundController@show',
     '/create' => 'CreateController@show',
+    '/list' => 'ListController@show'
 ];
 
 $db = [

@@ -8,13 +8,19 @@
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
     <link href="./public/css/material-dashboard.css?v=2.1.2" rel="stylesheet"/>
-    <link rel="stylesheet" href="./public/css/home">
     <title>Document</title>
 </head>
 <body>
     <div class="wrapper ">
         <?php include './app/Views/nav.view.php'; ?>
         <div class="main-panel">
+            <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
+                <div class="container-fluid">
+                    <div class="navbar-wrapper">
+                        <a class="navbar-brand" href="javascript:">Create</a>
+                    </div>
+                </div>
+            </nav>
             <div class="content">
                 <div class="container-fluid">
                     <form action="">

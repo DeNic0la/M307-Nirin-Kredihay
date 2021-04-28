@@ -35,7 +35,8 @@ function db(): PDO
     if ($dbInstance) {
         return $dbInstance;
     }
-    global $DataBaseConfig;
+
+    require 'Config/dbInfo.php'; // Get The DB Variables from This File
 
     try {
         $dbInstance = new PDO('mysql:host=127.0.0.1;dbname=' . $DataBaseConfig['name'], $DataBaseConfig['username'], $DataBaseConfig['password'], [

@@ -1,10 +1,10 @@
 CREATE DATABASE NirinKredihay;
 USE NirinKredihay;
-CREATE TABLE `nirinkredihay`.`loan`
+CREATE TABLE `nirinkredihay`.`loans`
 ( `id` INT NOT NULL AUTO_INCREMENT ,
  `prename` VARCHAR(50) NOT NULL ,
  `lastname` VARCHAR(50) NOT NULL ,
- `email` VARCHAR(50) NOT NULL ,
+ `email` VARCHAR(255) NOT NULL ,
  `phone` VARCHAR(50) NULL ,
  `rate` INT NOT NULL ,
  `fk_creditpackages_id` INT NOT NULL ,
@@ -12,10 +12,10 @@ CREATE TABLE `nirinkredihay`.`loan`
  PRIMARY KEY (`id`)
 ) ENGINE = InnoDB;
 
-ALTER TABLE `loan`
+ALTER TABLE `loans`
     ADD `startdate` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP AFTER `paidback`;
 
-ALTER TABLE `loan`
+ALTER TABLE `loans`
     CHANGE `paidback` `paidback` TINYINT(1) NOT NULL DEFAULT '0';
 
 -- Migrations From Creditpackages (Not Made by Us):

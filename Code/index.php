@@ -2,13 +2,7 @@
 require 'core/bootstrap.php';
 
 $routes = [
-	'/hallo/welt' => 'WelcomeController@index',
-];
-
-$db = [
-	'name'     => 'tasklist',
-	'username' => 'root',
-	'password' => '',
+	'/' => 'WelcomeController@index',
 ];
 
 $router = new Router($routes);

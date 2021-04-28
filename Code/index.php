@@ -2,7 +2,7 @@
 require 'core/bootstrap.php';
 
 $routes = [
-	'/hallo/welt' => 'WelcomeController@index',
+	'/404' => 'SiteNotFoundController@show',
 ];
 
 $db = [

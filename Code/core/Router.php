@@ -26,8 +26,7 @@ class Router
         $url = $this->cleanUrl($url);
 
         if ( ! array_key_exists($url, $this->routes)) {
-            http_response_code(404);
-            die('Keine Route für diese URL gefunden.');
+            $url = '404';
         }
 
         // Teile die Definition in Controller- und Methoden-Namen auf.

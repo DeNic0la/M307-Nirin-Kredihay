@@ -31,7 +31,7 @@
                     <div class="card">
                         <div class="card-header card-chart card-header-warning card-header-width">
                             <div class="ct-chart" id="dailySalesChart">
-                                <a class="fa fa-pencil fa-lg" aria-hidden="true"></a>
+                                <a class="fa fa-plus fa-lg" aria-hidden="true"></a>
                             </div>
                         </div>
                         <div class="card-body list-block">

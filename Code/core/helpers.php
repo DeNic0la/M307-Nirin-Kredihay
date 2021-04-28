@@ -10,7 +10,7 @@ function e(string $value): string
 
 function abort(int $code){
     http_response_code($code);
-    //Include 404 //(404 Page Displaying)
+    require 'app/Views/404.view.php';
     die();
 }
 
@@ -56,7 +56,7 @@ function validateRequest(array $Superglobal,array $fields):array{
     $HasErrors = false;
     foreach ($fields as $field=>$rules){
         $validationRules = explode("|",$rules);
-        $value = $Superglobal[$field] ?? '';
+        $value = trim($Superglobal[$field] ?? '');
         $FormularFields[$field] = $value;
         foreach ($validationRules as $rule){
             $ruleArray = explode(":",$rule);
@@ -79,7 +79,7 @@ function validateRequest(array $Superglobal,array $fields):array{
                     }
                     break;
                 case "email":
-                    if ($value !== '' && !preg_match("/[^@]+@[^.]+\..+$/i" ,$value)){
+                    if ($value !== '' && !preg_match("/[^@]+@[^.]/i" ,$value)){
                         $HasErrors = true;
                         $Errors[$field] = 'Geben sie eine Gültige E-Mail adresse ein';
                         continue 3;
@@ -93,9 +93,16 @@ function validateRequest(array $Superglobal,array $fields):array{
                     }
                     break;
                 case "phone":
-                    if ($value !== '' && !preg_match("/(\b(0041|0)|\B\+41)(\s?\(0\))?(\s)?[1-9]{2}(\s)?[0-9]{3}(\s)?[0-9]{2}(\s)?[0-9]{2}\b/",$value)){
+                    if ($value !== '' && !preg_match("/[0-9+() -]*/",$value)){
                         $HasErrors = true;
                         $Errors[$field] = 'Keine Gültige Telefon nummer';
+                        continue 3;
+                    }
+                    break;
+                case "NoNumber":
+                    if ($value !== '' && preg_match("/\d/i" ,$value)){
+                        $HasErrors = true;
+                        $Errors[$field] = 'Hier sind keine Nummern erlaubt';
                         continue 3;
                     }
                     break;

@@ -66,10 +66,9 @@
                                 <td><?= $loan->phone ? htmlspecialchars($loan->phone):'-' ?></td>
                                 <td><?= htmlspecialchars($loan->rate), " Raten" ?></td>
                                 <td><?= htmlspecialchars($loan->getPackage()->name )?? "" ?></td>
-
-                                <td><?= htmlspecialchars($this->getExpirityDate($loan)) ?></td>
+                                <td><?= htmlspecialchars($loan->getExpirationDate()) ?></td>
                                 <td class="text-center">
-                                    <i class="material-icons"><?= $this->get_status($loan) ?></i>
+                                    <i class="material-icons"><?= $this->getStatus($loan) ?></i>
                                 </td>
                                 <td class="td-actions text-center">
                                         <a href="edit?id=<?=$loan->id ?>" rel="tooltip" class="btn btn-primary">

@@ -2,6 +2,7 @@
 class Loan
 {
     private static string $tableName = 'loans';//Need to know wich table to Connect to
+    protected CreditPackage $creditPackage;
     /**
      * @var array|string[]
      */
@@ -65,37 +66,43 @@ class Loan
 
 
     public static function getAll(){
-        $statement = db()->prepare('SELECT * FROM '.Loan::$tableName.' WHERE paidback = false');
+        $statement = db()->prepare('SELECT * FROM '.Loan::$tableName.' WHERE paidback = false'); // Join on Package
         $statement->execute();
         $results = $statement->fetchAll();
         if ( ! $results) {
             return null;
         }
+
+        $CreditPackages = CreditPackage::getAll();
         $ToReturn = array();
         foreach($results as $result){
-            array_push($ToReturn,Loan::makeSelfFromResult($result));
+            array_push($ToReturn,Loan::makeSelfFromResult($result, $CreditPackages[$result['fk_creditpackages_id']]));
         }
         return $ToReturn;
 
     }
 
-    public static function getExpired()
+    public static function getDoneCount()
     {
-        $statement = db()->prepare('SELECT * FROM '.Loan::$tableName.' WHERE paidback = true');
+        $statement = db()->prepare('SELECT count(*) FROM '.Loan::$tableName.' WHERE paidback = true');
         $statement->execute();
-        $results = $statement->fetchAll();
+        $results = $statement->fetch();
         if ( ! $results) {
             return null;
         }
-        $ToReturn = array();
-        foreach($results as $result){
-            array_push($ToReturn,Loan::makeSelfFromResult($result));
-        }
-        return $ToReturn;
+        return $results[0];
     }
 
     public function getPackage(){ // This Returns the Package to wich this Model has a Relation with, since the Id is nor Very Informing
+        if (isset($this->creditPackage)){
+            return $this->creditPackage;
+        }
         return CreditPackage::getById($this->creditPackageId ?? 0);
+    }
+    public function getExpirationDate(){
+        $Date = $this->startdate;
+        $Days = $this->rate * 15;
+        return date('Y-m-d', strtotime($Date . ' + ' . $Days . ' days')) ?? null;
     }
 
     public static function getById(int $id): ?self
@@ -108,14 +115,15 @@ class Loan
         if ( ! $result) {
             return null;
         }
-        return Loan::makeSelfFromResult($result);
+        return Loan::makeSelfFromResult($result, CreditPackage::getById($result['fk_creditpackages_id']) );
     }
 
-    private static function makeSelfFromResult(array $result):self{
+    private static function makeSelfFromResult(array $result, CreditPackage $package):self{
         $ToReturn = new self($result['prename'], $result['lastname'], $result['email'], $result['rate'], $result['fk_creditpackages_id']);
         $ToReturn->_data['id'] = $result['id'];
         $ToReturn->_data['phone'] = $result['phone'];
         $ToReturn->_data['startdate'] = $result['startdate'];
+        $ToReturn->creditPackage = $package;
         return $ToReturn;
     }
 
@@ -132,6 +140,8 @@ class Loan
         $statement->bindParam(':fk_creditpackages_id',$this->_data['creditPackageId']);
         $PaidBackState = ($this->_data['paidback'] ? 1 : 0);
         $statement->bindParam(':paidback',$PaidBackState);
+        $paidbackState = boolval( $this->_data['paidback']);
+        $statement->bindParam(':paidback', $paidbackState );
         $statement->execute();
         $this->_data['id'] = $Connection->lastInsertId();
     }

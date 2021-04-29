@@ -63,7 +63,7 @@
                                     <?php
                                     foreach ($CreditPackages as $CreditPackage){
                                         ?>
-                                        <option value="<?= $OldValues['state'] ?? $CreditPackage->id; ?>"><?= $CreditPackage->name; ?> </option>
+                                        <option value="<?= $CreditPackage->id ?>"><?= $CreditPackage->name; ?> </option>
                                         <?php
                                     }
                                     ?>
@@ -81,6 +81,7 @@
                             </div>
 
                             <button type="submit" class="btn btn-primary">Speichern</button>
+
                             <a href="./list" class="btn btn-danger">Abbrechen</a>
                         </form>
                     </div>

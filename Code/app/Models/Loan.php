@@ -88,6 +88,13 @@ class Loan
         }
         return CreditPackage::getById($this->creditPackageId ?? 0);
     }
+    public function getExpirationDate(){
+        if (isset($this->startdate)&&isset($this->rate)){
+            return date('Y-m-d', strtotime( $this->startdate. ' + ' . ($this->rate*15) . ' days'));
+        }
+        return null;
+
+    }
 
     public static function getById(int $id): ?self
     {

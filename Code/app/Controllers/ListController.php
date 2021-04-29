@@ -6,6 +6,24 @@ class ListController
     {
         $loans = Loan::getAll();
 
+        uasort($loans,function ($a,$b){
+            //Return 1 if A First, -1 if B First
+            if (strtotime($a->getExpirationDate()) > strtotime($b->getExpirationDate())) {
+                return -1;
+            }
+            if (strtotime($a->getExpirationDate()) < strtotime($b->getExpirationDate())){
+                return 1;
+            }
+            if (strtotime($a->startdate) > strtotime($b->startdate)){
+                return -1;
+            }
+            if (strtotime($a->startdate) < strtotime($b->startdate)){
+                return 1;
+            }
+            return 0;
+
+        });
+
         require './app/Views/list.view.php';
 
     }

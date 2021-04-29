@@ -45,7 +45,9 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <?php foreach($loans as $loan) : ?>
+                            <?php
+                            if ($loans !== null){
+                            foreach($loans as $loan) : ?>
                             <tr>
                                 <td>
                                     <div class="form-check form-check-inline">
@@ -74,7 +76,9 @@
                                     </form>
                                 </td>
                             </tr>
-                            <?php endforeach; ?>
+                            <?php endforeach;
+                            }
+                            ?>
                             </tbody>
                         </table>
                     </div>

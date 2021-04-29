@@ -35,7 +35,7 @@
                             </div>
                         </div>
                         <div class="card-body list-block">
-                            <form action="/add" method="POST" id="createForm">
+                            <form action="add" method="POST" id="createForm">
                                 <div class="form-group">
                                     <label for="prename">Vorname</label>
                                     <input value="<?= $OldValues['prename'] ?? ''?>" type="text" class="form-control" id="prename" name="prename" placeholder="Max">

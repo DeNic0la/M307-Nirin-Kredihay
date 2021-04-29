@@ -36,7 +36,7 @@
                             </div>
                             <div class="card-body">
                                 <h4 class="card-title">Laufende kredite</h4>
-                                <p class="card-category"><span class="text-warning"><i class="fa fa-long-arrow-up"></i> 55 </span> Laufende Kredite</p>
+                                <p class="card-category"><span class="text-warning"><i class="fa fa-long-arrow-up"></i> <?= $this->countOngoing() ?> </span> Laufende Kredite</p>
                             </div>
                             <div class="card-footer">
                                 <div class="stats">
@@ -54,7 +54,7 @@
                             </div>
                             <div class="card-body">
                                 <h4 class="card-title">Abgeschlossene Kredite</h4>
-                                <p class="card-category"><span class="text-success"><i class="fa fa-stop"></i> 55 </span> Abgeschlossene Kredite</p>
+                                <p class="card-category"><span class="text-success"><i class="fa fa-stop"></i> <?= $this->countExpired() ?> </span> Abgeschlossene Kredite</p>
                             </div>
                             <div class="card-footer">
                                 <div class="stats">

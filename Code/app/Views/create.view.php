@@ -48,7 +48,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="email">E-Mail</label>
-                                    <input value="<?= $OldValues['email'] ?? ''?>" type="email" class="form-control" id="email" name="email" placeholder="name@example.com">
+                                    <input value="<?= $OldValues['email'] ?? ''?>" type="text" class="form-control" id="email" name="email" placeholder="name@example.com">
                                     <div class="text-danger" id="error-email"><?= $Errors['email'] ?? ''?></div>
                                 </div>
                                 <div class="form-group">
@@ -68,7 +68,7 @@
                                         <?php
                                         foreach ($CreditPackages as $CreditPackage){
                                             ?>
-                                            <option <?= isset($OldValues['package'])&&$OldValues['package']===$CreditPackage->id ? 'selected':'' ?> value="<?= $CreditPackage->id; ?>"><?= $CreditPackage->name; ?></option>
+                                            <option <?= ($OldValues['package']??'')==$CreditPackage->id ? 'selected':'' ?> value="<?= $CreditPackage->id; ?>"><?= $CreditPackage->name; ?></option>
                                             <?php
 
                                         }

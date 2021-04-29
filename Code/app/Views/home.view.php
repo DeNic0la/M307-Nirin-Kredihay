@@ -36,7 +36,7 @@
                             </div>
                             <div class="card-body">
                                 <h4 class="card-title">Laufende kredite</h4>
-                                <p class="card-category"><span class="text-warning"><i class="fa fa-long-arrow-up"></i> <?= $RunningCount ?> </span> Laufende Kredit</p>
+                                <p class="card-category"><span class="text-warning"><i class="fa fa-long-arrow-up"></i> <?= $RunningCount ?> </span> Laufende Kredite</p>
                             </div>
                         </div>
                     </div>

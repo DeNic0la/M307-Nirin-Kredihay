@@ -36,4 +36,9 @@ class ListController
     {
         return $loan->getExpirationDate();
     }
+
+    public function state()
+    {
+
+    }
 }

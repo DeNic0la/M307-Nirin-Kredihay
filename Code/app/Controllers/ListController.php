@@ -36,4 +36,9 @@ class ListController
 
         return date('Y-m-d', strtotime($Date . ' + ' . $Days . ' days'));
     }
+
+    public function state()
+    {
+
+    }
 }

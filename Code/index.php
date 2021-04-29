@@ -8,10 +8,11 @@ $routes = [
     '/create' => 'CreateController@show',
     '/list' => 'ListController@show',
     '/edit' => 'EditController@show',
-  
+
     // Below Here The Routes for Logik
     '/add' => 'CreateController@validate',
     '/update' => 'EditController@validate',
+    '/state' => 'EditController@changeState'
 ];
 
 

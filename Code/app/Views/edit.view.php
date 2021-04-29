@@ -63,7 +63,7 @@
                                     <?php
                                     foreach ($CreditPackages as $CreditPackage){
                                         ?>
-                                        <option value="<?= $OldValues['state'] ?? $CreditPackage->id; ?>"><?= $CreditPackage->name; ?> </option>
+                                        <option value="<?= $CreditPackage->id ?>"><?= $CreditPackage->name; ?> </option>
                                         <?php
                                     }
                                     ?>
@@ -79,7 +79,6 @@
                                 </div>
                                 <div class="text-danger" id="error-package"><?= $Errors['package'] ?? ''?></div>
                             </div>
-
                             <button type="submit" class="btn btn-primary">Erstellen</button>
                             <a href="./list" class="btn btn-danger">Abbrechen</a>
                         </form>

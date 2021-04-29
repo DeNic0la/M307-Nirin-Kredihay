@@ -31,6 +31,7 @@
                         </div>
                     </div>
                     <div class="card-body list-block">
+                        <form action="state" method="POST">
                         <table class="table">
                             <thead>
                             <tr>
@@ -53,7 +54,7 @@
                                 <td>
                                     <div class="form-check form-check-inline">
                                         <label class="form-check-label">
-                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                                            <input class="form-check-input" type="checkbox" id="state <?= $loan->id ?>" name="state <?= $loan->id ?>" value="<?= $loan->id ?>">
                                             <span class="form-check-sign">
                                             <span class="check"></span>
                                         </span>
@@ -65,17 +66,15 @@
                                 <td><?= $loan->phone ? htmlspecialchars($loan->phone):'-' ?></td>
                                 <td><?= htmlspecialchars($loan->rate), " Raten" ?></td>
                                 <td><?= htmlspecialchars($loan->getPackage()->name )?? "" ?></td>
+
                                 <td><?= htmlspecialchars($this->getExpirityDate($loan)) ?></td>
                                 <td class="text-center">
                                     <i class="material-icons"><?= $this->get_status($loan) ?></i>
                                 </td>
                                 <td class="td-actions text-center">
-                                    <form action="./edit" method="GET">
-                                        <input type="text" id="id" name="id" value="<?=$loan->id ?>" hidden>
-                                        <button type="submit" rel="tooltip" class="btn btn-primary">
+                                        <a href="edit?id=<?=$loan->id ?>" rel="tooltip" class="btn btn-primary">
                                             <i class="material-icons">edit</i>
-                                        </button>
-                                    </form>
+                                        </a>
                                 </td>
                             </tr>
                             <?php endforeach;
@@ -83,6 +82,8 @@
                             ?>
                             </tbody>
                         </table>
+                            <button type="submit" class="btn btn-primary">Ausgewählte als bezahlt markieren</button>
+                        </form>
                     </div>
                 </div>
             </div>

@@ -45,14 +45,24 @@
              $Loan->lastname = $Validated['lastname'];
              $Loan->email = $Validated['email'];
              $Loan->phone = $Validated['tel'];
-             $Loan->package = $Validated['package'];
+             $Loan->creditPackageId = intval($Validated['package']);
              $Loan->paidback = (bool)$Validated['state'];
 
-
              $Loan->update();
-
              Header("Location: list");
          }
          die();
+     }
+
+     public function changeState()
+     {
+         foreach($_POST as $post)
+         {
+             $Loan = Loan::getById($post);
+             $Loan->paidback = true;
+             $Loan->update();
+         }
+
+         Header('Location: list');
      }
  }

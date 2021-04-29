@@ -145,7 +145,7 @@ class Loan
         $statement->bindParam(':lastname',$this->_data['lastname']);
         $statement->bindParam(':email',$this->_data['email']);
         $statement->bindParam(':phone',$this->_data['phone']);
-        $statement->bindParam(':fk_creditpackages_id',$this->_data['package']);
+        $statement->bindParam(':fk_creditpackages_id',$this->_data['creditPackageId']);
         $PaidBackState = ($this->_data['paidback'] ? 1 : 0);
         $statement->bindParam(':paidback',$PaidBackState);
 
@@ -153,5 +153,4 @@ class Loan
 
         $statement->execute();
     }
-
 }

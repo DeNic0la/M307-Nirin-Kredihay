@@ -11,6 +11,7 @@ $routes = [
   
     // Below Here The Routes for Logik
     '/add' => 'CreateController@validate',
+    '/update' => 'EditController@validate',
 ];
 
 

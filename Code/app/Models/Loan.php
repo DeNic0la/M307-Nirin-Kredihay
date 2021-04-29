@@ -20,7 +20,6 @@ class Loan
     );
 
 
-
     public function __get($name) {
         if (isset($this->_data[$name])) {
             return $this->_data[$name];
@@ -63,6 +62,7 @@ class Loan
         $this->paidback = false;
         $this->creditPackageId = $creditPackageId;
     }
+
 
     public static function getAll(){
         $statement = db()->prepare('SELECT * FROM '.Loan::$tableName.' WHERE paidback = false');
@@ -119,4 +119,23 @@ class Loan
         $statement->execute();
         $this->_data['id'] = $Connection->lastInsertId();
     }
+
+    public function update(){
+        $Connection = $this->pdo;
+        $statement = $Connection->prepare('UPDATE '.Loan::$tableName.' SET 
+                  prename=:prename,lastname=:lastname,email=:email,phone=:phone,fk_creditpackages_id=:fk_creditpackages_id,paidback=:paidback 
+                    WHERE id=:id');
+        $statement->bindParam(':prename',$this->_data['prename']);
+        $statement->bindParam(':lastname',$this->_data['lastname']);
+        $statement->bindParam(':email',$this->_data['email']);
+        $statement->bindParam(':phone',$this->_data['phone']);
+        $statement->bindParam(':fk_creditpackages_id',$this->_data['package']);
+        $PaidBackState = ($this->_data['paidback'] ? 1 : 0);
+        $statement->bindParam(':paidback',$PaidBackState);
+
+        $statement->bindParam(':id',$this->_data['id']);
+
+        $statement->execute();
+    }
+
 }

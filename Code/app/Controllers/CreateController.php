@@ -34,7 +34,6 @@
 
             Header("Location: list");
         }
-        var_dump($Data);
         die();
      }
  }

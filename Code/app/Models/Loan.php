@@ -82,19 +82,15 @@ class Loan
 
     }
 
-    public static function getExpired()
+    public static function getDoneCount()
     {
-        $statement = db()->prepare('SELECT * FROM '.Loan::$tableName.' WHERE paidback = true');
+        $statement = db()->prepare('SELECT count(*) FROM '.Loan::$tableName.' WHERE paidback = true');
         $statement->execute();
-        $results = $statement->fetchAll();
+        $results = $statement->fetch();
         if ( ! $results) {
             return null;
         }
-        $ToReturn = array();
-        foreach($results as $result){
-            array_push($ToReturn,Loan::makeSelfFromResult($result));
-        }
-        return $ToReturn;
+        return $results[0];
     }
 
     public function getPackage(){ // This Returns the Package to wich this Model has a Relation with, since the Id is nor Very Informing
@@ -104,11 +100,9 @@ class Loan
         return CreditPackage::getById($this->creditPackageId ?? 0);
     }
     public function getExpirationDate(){
-        if (isset($this->startdate)&&isset($this->rate)){
-            return date('Y-m-d', strtotime( $this->startdate. ' + ' . ($this->rate*15) . ' days'));
-        }
-        return null;
-
+        $Date = $this->startdate;
+        $Days = $this->rate * 15;
+        return date('Y-m-d', strtotime($Date . ' + ' . $Days . ' days')) ?? null;
     }
 
     public static function getById(int $id): ?self

@@ -6,7 +6,7 @@
 -->
     <div class="logo">
         <a href="" class="simple-text logo-mini">
-            Kredithay
+            Kredihay
         </a>
     </div>
     <div class="sidebar-wrapper">

@@ -33,7 +33,7 @@ window.addEventListener("load", function(){
             hasErrors = true
             document.getElementById("error-rate").innerHTML = 'Bitte geben sie einene gültige Rate ein (1-10)';
         }
-        if (rate.value.length > 0 && !tel.value.match(/[0-9+ ()-]/)){
+        if (tel.value.length > 0 && !tel.value.match(/[0-9+ ()-]/)){
             hasErrors = true
             document.getElementById("error-tel").innerHTML = 'Die eingegebene Telefonnummer ist in einem ungültigen Format';
         }

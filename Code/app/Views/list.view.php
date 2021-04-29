@@ -40,6 +40,7 @@
                                 <th>Telefon</th>
                                 <th>Raten</th>
                                 <th>Packet</th>
+                                <th>Ablaufdatum</th>
                                 <th class="text-center">Status</th>
                                 <th class="text-center">Bearbeiten</th>
                             </tr>
@@ -59,11 +60,12 @@
                                         </label>
                                     </div>
                                 </td>
-                                <td><?= $loan->prename ," ", $loan->lastname?></td>
-                                <td><?= $loan->email ?></td>
-                                <td><?= $loan->phone ?></td>
-                                <td><?= $loan->rate, " Raten" ?></td>
-                                <td><?= $loan->getPackage()->name ?? "" ?></td>
+                                <td><?= htmlspecialchars($loan->prename) ," ",   htmlspecialchars($loan->lastname)?></td>
+                                <td><?= htmlspecialchars($loan->email) ?></td>
+                                <td><?= $loan->phone ? htmlspecialchars($loan->phone):'-' ?></td>
+                                <td><?= htmlspecialchars($loan->rate), " Raten" ?></td>
+                                <td><?= htmlspecialchars($loan->getPackage()->name )?? "" ?></td>
+                                <td><?= htmlspecialchars($this->getExpirityDate($loan)) ?></td>
                                 <td class="text-center">
                                     <i class="material-icons"><?= $this->get_status($loan) ?></i>
                                 </td>

@@ -38,7 +38,6 @@
          }
          else{
 
-
              $Validated = $Data['Validated'];
 
              $Loan = Loan::getById($Validated['id']);
@@ -48,6 +47,7 @@
              $Loan->phone = $Validated['tel'];
              $Loan->package = $Validated['package'];
              $Loan->paidback = (bool)$Validated['state'];
+
 
              $Loan->update();
 

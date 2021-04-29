@@ -38,28 +38,28 @@
                             <input type="hidden" name="id" value="<?= $loan->id?>" >
                             <div class="form-group">
                                 <label for="prename">Vorname</label>
-                                <input value="<?= $OldValues['prename'] ?? $loan->prename?>" type="text" class="form-control" id="prename" name="prename" placeholder="Max">
+                                <input value="<?= $OldValues['prename'] ?? htmlspecialchars($loan->prename) ?>" type="text" class="form-control" id="prename" name="prename" placeholder="Max">
                                 <div class="text-danger" id="error-prename"><?= $Errors['prename'] ?? ''?></div>
                             </div>
                             <div class="form-group">
                                 <label for="lastname">Name</label>
-                                <input value="<?= $OldValues['lastname'] ?? $loan->lastname?>" type="text" class="form-control" id="lastname" name="lastname" placeholder="Muster">
+                                <input value="<?= htmlspecialchars($OldValues['lastname'] ?? $loan->lastname) ?>" type="text" class="form-control" id="lastname" name="lastname" placeholder="Muster">
                                 <div class="text-danger" id="error-lastname"><?= $Errors['lastname'] ?? ''?></div>
                             </div>
                             <div class="form-group">
                                 <label for="email">E-Mail</label>
-                                <input value="<?= $OldValues['email'] ?? $loan->email?>" type="email" class="form-control" id="email" name="email" placeholder="name@example.com">
+                                <input value="<?= htmlspecialchars($OldValues['email'] ?? $loan->email) ?>" type="email" class="form-control" id="email" name="email" placeholder="name@example.com">
                                 <div class="text-danger" id="error-email"><?= $Errors['email'] ?? ''?></div>
                             </div>
                             <div class="form-group">
                                 <label for="tel">Telefonnummer</label>
-                                <input value="<?= $loan->phone?>" type="text" class="form-control" id="tel" name="tel" placeholder="+41 xx xxx xx xx">
+                                <input value="<?= htmlspecialchars($loan->phone) ?>" type="text" class="form-control" id="tel" name="tel" placeholder="+41 xx xxx xx xx">
                                 <div class="text-danger" id="error-tel"><?= $Errors['tel'] ?? ''?></div>
                             </div>
                             <div class="form-group">
                                 <label for="package">Packet</label>
                                 <select class="form-control selectpicker" data-style="btn btn-link" id="package" name="package">
-                                    <option value="<?= $loan->getPackage()->id ?>" hidden><?= $loan->getPackage()->name ?></option>
+                                    <option value="<?= $loan->getPackage()->id ?>" hidden><?= htmlspecialchars($loan->getPackage()->name) ?></option>
                                     <?php
                                     foreach ($CreditPackages as $CreditPackage){
                                         ?>

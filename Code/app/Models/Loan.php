@@ -79,6 +79,21 @@ class Loan
 
     }
 
+    public static function getExpired()
+    {
+        $statement = db()->prepare('SELECT * FROM '.Loan::$tableName.' WHERE paidback = true');
+        $statement->execute();
+        $results = $statement->fetchAll();
+        if ( ! $results) {
+            return null;
+        }
+        $ToReturn = array();
+        foreach($results as $result){
+            array_push($ToReturn,Loan::makeSelfFromResult($result));
+        }
+        return $ToReturn;
+    }
+
     public function getPackage(){ // This Returns the Package to wich this Model has a Relation with, since the Id is nor Very Informing
         return CreditPackage::getById($this->creditPackageId ?? 0);
     }
@@ -115,7 +130,8 @@ class Loan
         $statement->bindParam(':phone',$this->_data['phone']);
         $statement->bindParam(':rate',$this->_data['rate']);
         $statement->bindParam(':fk_creditpackages_id',$this->_data['creditPackageId']);
-        $statement->bindParam(':paidback',$this->_data['paidback']);
+        $PaidBackState = ($this->_data['paidback'] ? 1 : 0);
+        $statement->bindParam(':paidback',$PaidBackState);
         $statement->execute();
         $this->_data['id'] = $Connection->lastInsertId();
     }

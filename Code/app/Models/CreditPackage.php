@@ -41,11 +41,8 @@ class CreditPackage
 
     }
 
-    public static function getById(int $id): ?self
-    {
+    public static function getById(int $id): ?self  {
 
-
-        /*
         $statement = db()->prepare('SELECT * FROM '.CreditPackage::$tableName.' WHERE id = :id LIMIT 1');
         $statement->bindParam(':id', $id);
         $statement->execute();
@@ -54,6 +51,6 @@ class CreditPackage
         if ( ! $result) {
             return null;
         }
-        return new self($result['id'], $result['name']);*/
+        return new self($result['id'], $result['name']);
     }
 }

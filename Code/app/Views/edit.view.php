@@ -80,7 +80,7 @@
                                 <div class="text-danger" id="error-package"><?= $Errors['package'] ?? ''?></div>
                             </div>
 
-                            <button type="submit" class="btn btn-primary">Erstellen</button>
+                            <button type="submit" class="btn btn-primary">Speichern</button>
                             <a href="./list" class="btn btn-danger">Abbrechen</a>
                         </form>
                     </div>

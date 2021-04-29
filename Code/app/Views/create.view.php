@@ -76,6 +76,10 @@
                                     </select>
                                     <div class="text-danger" id="error-package"><?= $Errors['package'] ?? ''?></div>
                                 </div>
+                                <div class="form-group">
+                                    <label for="endDate">Rückzahlung Bis</label>
+                                    <input value="" type="text" class="form-control" id="endDate" placeholder="Es wurden noch nicht alle nötigen Felder ausgefüllt" readonly>
+                                </div>
                                 <button type="submit" class="btn btn-primary">Erstellen</button>
                                 <a href="./" class="btn btn-danger">Abbrechen</a>
                             </form>

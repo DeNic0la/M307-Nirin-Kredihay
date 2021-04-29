@@ -3,6 +3,7 @@ class CreditPackage
 {
     private static string $tableName = 'creditpackages';//Need to know wich table to Connect to
     protected PDO $pdo;
+    protected static array $StagedPackages = array();
     protected $_data = array(
         'id' => '',
         'name' => '',
@@ -34,7 +35,7 @@ class CreditPackage
         }
         $ToReturn = array();
         foreach($results as $result){
-            array_push($ToReturn,new self($result['id'], $result['name'] ) );
+            $ToReturn[$result['id']] = new self($result['id'], $result['name']);
         }
         return $ToReturn;
 
@@ -42,6 +43,9 @@ class CreditPackage
 
     public static function getById(int $id): ?self
     {
+
+
+        /*
         $statement = db()->prepare('SELECT * FROM '.CreditPackage::$tableName.' WHERE id = :id LIMIT 1');
         $statement->bindParam(':id', $id);
         $statement->execute();
@@ -50,6 +54,6 @@ class CreditPackage
         if ( ! $result) {
             return null;
         }
-        return new self($result['id'], $result['name']);
+        return new self($result['id'], $result['name']);*/
     }
 }

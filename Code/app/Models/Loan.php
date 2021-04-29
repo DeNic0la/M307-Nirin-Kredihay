@@ -21,7 +21,6 @@ class Loan
     );
 
 
-
     public function __get($name) {
         if (isset($this->_data[$name])) {
             return $this->_data[$name];
@@ -65,6 +64,7 @@ class Loan
         $this->creditPackageId = $creditPackageId;
     }
 
+
     public static function getAll(){
         $statement = db()->prepare('SELECT * FROM '.Loan::$tableName.' WHERE paidback = false'); // Join on Package
         $statement->execute();
@@ -80,6 +80,21 @@ class Loan
         }
         return $ToReturn;
 
+    }
+
+    public static function getExpired()
+    {
+        $statement = db()->prepare('SELECT * FROM '.Loan::$tableName.' WHERE paidback = true');
+        $statement->execute();
+        $results = $statement->fetchAll();
+        if ( ! $results) {
+            return null;
+        }
+        $ToReturn = array();
+        foreach($results as $result){
+            array_push($ToReturn,Loan::makeSelfFromResult($result));
+        }
+        return $ToReturn;
     }
 
     public function getPackage(){ // This Returns the Package to wich this Model has a Relation with, since the Id is nor Very Informing
@@ -129,9 +144,30 @@ class Loan
         $statement->bindParam(':phone',$this->_data['phone']);
         $statement->bindParam(':rate',$this->_data['rate']);
         $statement->bindParam(':fk_creditpackages_id',$this->_data['creditPackageId']);
+        $PaidBackState = ($this->_data['paidback'] ? 1 : 0);
+        $statement->bindParam(':paidback',$PaidBackState);
         $paidbackState = boolval( $this->_data['paidback']);
         $statement->bindParam(':paidback', $paidbackState );
         $statement->execute();
         $this->_data['id'] = $Connection->lastInsertId();
     }
+
+    public function update(){
+        $Connection = $this->pdo;
+        $statement = $Connection->prepare('UPDATE '.Loan::$tableName.' SET 
+                  prename=:prename,lastname=:lastname,email=:email,phone=:phone,fk_creditpackages_id=:fk_creditpackages_id,paidback=:paidback 
+                    WHERE id=:id');
+        $statement->bindParam(':prename',$this->_data['prename']);
+        $statement->bindParam(':lastname',$this->_data['lastname']);
+        $statement->bindParam(':email',$this->_data['email']);
+        $statement->bindParam(':phone',$this->_data['phone']);
+        $statement->bindParam(':fk_creditpackages_id',$this->_data['package']);
+        $PaidBackState = ($this->_data['paidback'] ? 1 : 0);
+        $statement->bindParam(':paidback',$PaidBackState);
+
+        $statement->bindParam(':id',$this->_data['id']);
+
+        $statement->execute();
+    }
+
 }

@@ -123,7 +123,7 @@ function validateRequest(array $Superglobal,array $fields):array{
 
             }
         }
-        $Validated[$field] = $value;
+        $Validated[$field] = htmlspecialchars($value);
     }
     return array(
         'hasErrors' => $HasErrors,

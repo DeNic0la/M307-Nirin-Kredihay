@@ -70,6 +70,7 @@
                                             ?>
                                             <option <?= isset($OldValues['package'])&&$OldValues['package']===$CreditPackage->id ? 'selected':'' ?> value="<?= $CreditPackage->id; ?>"><?= $CreditPackage->name; ?></option>
                                             <?php
+
                                         }
                                         ?>
                                     </select>

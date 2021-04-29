@@ -81,7 +81,7 @@
                             ?>
                             </tbody>
                         </table>
-                            <button type="submit" class="btn btn-primary">Ausgewählte als bezahlt markieren</button>
+                            <button type="submit" class="btn btn-primary">Auf Bezahlt setzen</button>
                         </form>
                     </div>
                 </div>

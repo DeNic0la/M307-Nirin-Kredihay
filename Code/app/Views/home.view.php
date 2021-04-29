@@ -20,7 +20,7 @@
         <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
             <div class="container-fluid">
                 <div class="navbar-wrapper">
-                    <a class="navbar-brand" href="javascript:">Dashboard</a>
+                    <a class="navbar-brand">Übersicht</a>
                 </div>
             </div>
         </nav>
@@ -36,12 +36,7 @@
                             </div>
                             <div class="card-body">
                                 <h4 class="card-title">Laufende kredite</h4>
-                                <p class="card-category"><span class="text-warning"><i class="fa fa-long-arrow-up"></i> <?= $RunningCount ?> </span> Laufende Kredite</p>
-                            </div>
-                            <div class="card-footer">
-                                <div class="stats">
-                                    <i class="material-icons">access_time</i> updated 4 minutes ago
-                                </div>
+                                <p class="card-category"><span class="text-warning"><i class="fa fa-long-arrow-up"></i> <?= $RunningCount ?> </span> Laufende Kredit</p>
                             </div>
                         </div>
                     </div>
@@ -55,11 +50,6 @@
                             <div class="card-body">
                                 <h4 class="card-title">Abgeschlossene Kredite</h4>
                                 <p class="card-category"><span class="text-success"><i class="fa fa-stop"></i> <?= $DoneCount ?> </span> Abgeschlossene Kredite</p>
-                            </div>
-                            <div class="card-footer">
-                                <div class="stats">
-                                    <i class="material-icons">access_time</i> updated 2 minutes ago
-                                </div>
                             </div>
                         </div>
                     </div>

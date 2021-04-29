@@ -32,7 +32,7 @@
             $CreatedLoan->phone = $Validated['tel'];
             $CreatedLoan->save();
 
-            Header("Location: /list");
+            Header("Location: list");
         }
         var_dump($Data);
         die();

@@ -4,8 +4,8 @@ class HomeController
 {
     public function show()
     {
-        $DoneCount = Loan::getDoneCount();
-        $RunningCount = count(Loan::getAll());
+        $DoneCount = Loan::getDoneCount() ?? '';
+        $RunningCount = Loan::getAll() === null ? '0':count(Loan::getAll());
         require './app/Views/home.view.php';
     }
 }

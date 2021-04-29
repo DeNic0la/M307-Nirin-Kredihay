@@ -48,7 +48,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="email">E-Mail</label>
-                                <input value="<?= htmlspecialchars($OldValues['email'] ?? $loan->email) ?>" type="email" class="form-control" id="email" name="email" placeholder="name@example.com">
+                                <input value="<?= htmlspecialchars($OldValues['email'] ?? $loan->email) ?>" type="text" class="form-control" id="email" name="email" placeholder="name@example.com">
                                 <div class="text-danger" id="error-email"><?= $Errors['email'] ?? ''?></div>
                             </div>
                             <div class="form-group">

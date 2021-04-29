@@ -3,8 +3,11 @@
  {
      public function show()
      {
-         $id = $_GET['id'];
+         $id = $_GET['id'] ?? '';
 
+         if ($id === ''){
+             abort(404);
+         }
          $loan = Loan::getById($id);
 
          $CreditPackages = CreditPackage::getAll();
